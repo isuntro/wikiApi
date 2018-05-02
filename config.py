@@ -1,5 +1,5 @@
+#!venv/bin/python
 import os
-
 class Config(object):
     """Parent configuration class."""
     DEBUG = False
@@ -14,11 +14,7 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     """Configurations for Testing"""
     TESTING = True
-    DATABASE = os.path.join(os.pardir, 'test.db')
-    DEBUG = True
-
-class StagingConfig(Config):
-    """Configurations for Staging."""
+    DATABASE = os.path.join(os.getcwd(), 'api.db')
     DEBUG = True
 
 class ProductionConfig(Config):
@@ -29,6 +25,5 @@ class ProductionConfig(Config):
 app_config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
-    'staging': StagingConfig,
     'production': ProductionConfig,
 }
